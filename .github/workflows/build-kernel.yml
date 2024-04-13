@@ -122,7 +122,7 @@ jobs:
         sed -i "s/Art_millet/$KERNEL_NAME/g" ./AnyKernel3/anykernel.sh
         cp out/arch/arm64/boot/Image AnyKernel3
         # cp out/arch/arm64/boot/dtbo.img AnyKernel3
-        cp out/arch/arm64/boot/dtb AnyKernel3
+        # cp out/arch/arm64/boot/dtb AnyKernel3
 
     - name: Upload Kernel
       uses: actions/upload-artifact@v4
