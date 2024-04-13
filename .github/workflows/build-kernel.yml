@@ -6,7 +6,7 @@ on:
       KERNEL_SOURCE:
         description: 'Kernel Source'
         required: true
-        default: 'lightsummer233/kernel_xiaomi_sm8250'
+        default: 'Death8023/kernel_xiaomi_sm8250_RC'
       KERNEL_SOURCE_BRANCH:
         description: 'Branch'
         required: true
@@ -75,7 +75,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         # token: ${{env.PERSONAL_TOKEN}}
-        repository: lightsummer233/AnyKernel3
+        repository: Death8023/AnyKernel3
         path: kernel-source/AnyKernel3
 
     - name: Setup KernelSU
@@ -119,10 +119,10 @@ jobs:
       run: |
         cd kernel-source
         KERNEL_NAME=$(grep "CONFIG_LOCALVERSION=" arch/arm64/configs/vendor/xiaomi/sm8250-common.config | cut -d'-' -f2 | tr -d '"')
-        sed -i "s/アリエス/$KERNEL_NAME/g" ./AnyKernel3/anykernel.sh
+        sed -i "s/Art_millet/$KERNEL_NAME/g" ./AnyKernel3/anykernel.sh
         cp out/arch/arm64/boot/Image AnyKernel3
         # cp out/arch/arm64/boot/dtbo.img AnyKernel3
-        # cp out/arch/arm64/boot/dtb AnyKernel3
+        cp out/arch/arm64/boot/dtb AnyKernel3
 
     - name: Upload Kernel
       uses: actions/upload-artifact@v4
