@@ -95,8 +95,8 @@ jobs:
       run: |
         cd kernel-source
         export PATH=$GITHUB_WORKSPACE/clang/bin:$PATH
-        export KBUILD_BUILD_HOST=AL1S
-        export KBUILD_BUILD_USER=awainatsu
+        export KBUILD_BUILD_HOST=Art
+        export KBUILD_BUILD_USER=@Death
         make -j$(nproc --all) O=out ARCH=arm64 CC=clang ${{ env.KERNEL_DEFCONFIG }}
 
         scripts/config --file out/.config \
@@ -127,7 +127,7 @@ jobs:
     - name: Upload Kernel
       uses: actions/upload-artifact@v4
       with:
-        name: Art-old-kernel-${{ env.DEVICE }}${{ env.ENABLED_KERNELSU }}-${{ env.BUILD_TIME }}
+        name: Art-R-kernel-${{ env.DEVICE }}${{ env.ENABLED_KERNELSU }}-${{ env.BUILD_TIME }}
         path: |
           kernel-source/AnyKernel3/
           !kernel-source/AnyKernel3/*.git*
