@@ -118,7 +118,7 @@ jobs:
     - name: Configuration AnyKernel3
       run: |
         cd kernel-source
-        KERNEL_NAME=$(grep "CONFIG_LOCALVERSION=" arch/arm64/configs/vendor/xiaomi/sm8250-common.config | cut -d'-' -f2 | tr -d '"')
+        KERNEL_NAME=$(grep "CONFIG_LOCALVERSION=" arch/arm64/configs/vendor/alioth_defconfig | cut -d'-' -f2 | tr -d '"')
         sed -i "s/Art_millet/$KERNEL_NAME/g" ./AnyKernel3/anykernel.sh
         cp out/arch/arm64/boot/Image AnyKernel3
         # cp out/arch/arm64/boot/dtbo.img AnyKernel3
