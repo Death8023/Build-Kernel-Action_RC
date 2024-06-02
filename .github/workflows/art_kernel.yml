@@ -6,11 +6,11 @@ on:
       KERNEL_SOURCE:
         description: 'Kernel Source'
         required: true
-        default: 'Death8023/InfiniR_kernel_alioth'
+        default: 'Death8023/kernel_xiaomi_sm8250_old.git'
       KERNEL_SOURCE_BRANCH:
         description: 'Branch'
         required: true
-        default: '14.0-alioth'
+        default: 'aries'
       KERNEL_DEFCONFIG:
         description: 'Defconfig'
         required: true
@@ -95,8 +95,8 @@ jobs:
       run: |
         cd kernel-source
         export PATH=$GITHUB_WORKSPACE/clang/bin:$PATH
-        export KBUILD_BUILD_HOST=AL1S
-        export KBUILD_BUILD_USER=awainatsu
+        export KBUILD_BUILD_HOST=Art
+        export KBUILD_BUILD_USER=Death
         make -j$(nproc --all) O=out ARCH=arm64 CC=clang ${{ env.KERNEL_DEFCONFIG }}
 
         scripts/config --file out/.config \
@@ -127,7 +127,7 @@ jobs:
     - name: Upload Kernel
       uses: actions/upload-artifact@v4
       with:
-        name: Art_millet-kernel-${{ env.DEVICE }}${{ env.ENABLED_KERNELSU }}-${{ env.BUILD_TIME }}
+        name: Art_old-kernel-${{ env.DEVICE }}${{ env.ENABLED_KERNELSU }}-${{ env.BUILD_TIME }}
         path: |
           kernel-source/AnyKernel3/
           !kernel-source/AnyKernel3/*.git*
