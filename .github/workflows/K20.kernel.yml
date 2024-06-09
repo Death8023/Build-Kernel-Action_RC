@@ -6,15 +6,15 @@ on:
       KERNEL_SOURCE:
         description: 'Kernel Source'
         required: true
-        default: 'Death8023/kernel_xiaomi_sm8250_old.git'
+        default: 'SchweGELBin/kernel_milk_davinci.git'
       KERNEL_SOURCE_BRANCH:
         description: 'Branch'
         required: true
-        default: 'aries'
+        default: 'vantom-14'
       KERNEL_DEFCONFIG:
         description: 'Defconfig'
         required: true
-        default: 'alioth_defconfig'
+        default: 'davinci_defconfig'
       CLANG_URL:
         description: 'Clang URL'
         required: true
@@ -127,7 +127,7 @@ jobs:
     - name: Upload Kernel
       uses: actions/upload-artifact@v4
       with:
-        name: Art_old-kernel-${{ env.DEVICE }}${{ env.ENABLED_KERNELSU }}-${{ env.BUILD_TIME }}
+        name: vantom-kernel-${{ env.DEVICE }}${{ env.ENABLED_KERNELSU }}-${{ env.BUILD_TIME }}
         path: |
           kernel-source/AnyKernel3/
           !kernel-source/AnyKernel3/*.git*
